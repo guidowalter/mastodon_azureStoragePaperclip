@@ -19,6 +19,7 @@ gem 'pghero', '~> 2.8'
 gem 'dotenv-rails', '~> 2.8'
 
 gem 'aws-sdk-s3', '~> 1.114', require: false
+gem 'paperclip-azure', '~> 1.0', require:false
 gem 'fog-core', '<= 2.1.0'
 gem 'fog-openstack', '~> 0.3', require: false
 gem 'kt-paperclip', '~> 7.1'
