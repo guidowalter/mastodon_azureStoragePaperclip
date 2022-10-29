@@ -142,7 +142,7 @@ namespace :mastodon do
       prompt.say "\n"
 
       if prompt.yes?('Do you want to store uploaded files on the cloud?', default: false)
-        case prompt.select('Provider', ['Amazon S3', 'Wasabi', 'Minio', 'Google Cloud Storage'])
+        case prompt.select('Provider', ['Amazon S3', 'Wasabi', 'Minio', 'Google Cloud Storage','Microsoft Azure Storage'])
         when 'Amazon S3'
           env['S3_ENABLED']  = 'true'
           env['S3_PROTOCOL'] = 'https'
@@ -253,7 +253,28 @@ namespace :mastodon do
             q.modify :strip
           end
         end
+       when 'Microsoft Azure Storage'
+          env['AZURE_BLOB_ENABLED']     = 'true'
 
+          env['AZURE_BLOB_CONTAINER'] = prompt.ask('AZ ST container name:') do |q|
+            q.required true
+            q.default 'mastodon'
+            q.modify :strip
+          end
+
+          env['AZURE_BLOB_STORAGE_ACCOUNT_NAME'] = prompt.ask('AZ ST account name:') do |q|
+            q.required true
+            q.default 'mastodon'
+            q.modify :strip
+          end
+
+          env['AZURE_BLOB_STORAGE_ACCESS_KEY'] = prompt.ask('AZ ST access key:') do |q|
+            q.required true
+            q.modify :strip
+          end
+        end
+        
+        
         if prompt.yes?('Do you want to access the uploaded files from your own domain?')
           env['S3_ALIAS_HOST'] = prompt.ask('Domain for uploaded files:') do |q|
             q.required true
