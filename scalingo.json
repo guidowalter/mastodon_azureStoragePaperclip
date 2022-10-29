@@ -42,6 +42,23 @@
       "description": "Amazon S3 Secret Key",
       "required": false
     },
+    "AZURE_BLOB_ENABLED": {
+      "description": "Should Mastodon use Azuer Blob Storage for storage? This is highly recommended, as Heroku does not have persistent file storage (files will be lost).",
+      "value": "true",
+      "required": false
+    },
+    "AZURE_BLOB_CONTAINER": {
+      "description": "Azure Blob Storage Container Bucket",
+      "required": false
+    },
+    "AZURE_BLOB_STORAGE_ACCOUNT_NAME": {
+      "description": "Azure Blob Storage Account Name",
+      "required": false
+    },
+    "AZURE_BLOB_STORAGE_ACCESS_KEY": {
+      "description": "Azure Blob Storage Access Key",
+      "required": false
+    },        
     "SMTP_SERVER": {
       "description": "Hostname for SMTP server, if you want to enable email",
       "required": false
